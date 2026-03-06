@@ -1,0 +1,20 @@
+<!-- Payment Summary -->
+<div id="payment-wrapper" style="max-width:480px; margin:0 auto; font-family:sans-serif;">
+  <div style="background:#f9f9f9; border-radius:8px; padding:16px; margin-bottom:24px;">
+    <p style="margin:0; color:#666; font-size:14px;">Deposit Due Today (25%)</p>
+    <p id="display-amount" style="margin:6px 0 0; font-size:32px; font-weight:700; color:#111;">
+      Loading...
+    </p>
+  </div>
+
+  <!-- Stripe injects card form here -->
+  <div id="payment-element"></div>
+
+  <button id="pay-btn" style="margin-top:20px; width:100%; padding:14px; background:#635BFF; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer;">
+    Pay Deposit Now
+  </button>
+
+  <p id="error-msg" style="color:#cc0000; margin-top:12px; font-size:14px;"></p>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>

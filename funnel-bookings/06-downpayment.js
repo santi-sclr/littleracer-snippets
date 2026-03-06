@@ -50,6 +50,21 @@
       waiverRow.style.display = 'block';
     }
   }
+
+  // ── Handle Travel Fee display logic ────────────────────
+  const travelRow = document.getElementById('travel-fee-row');
+  const travelVal = document.getElementById('travel-fee-value');
+  if (travelRow && travelVal) {
+    if (source === 'affiliate') {
+      // Affiliate: always show "to be determined with vendor"
+      travelVal.textContent = 'To be determined with vendor';
+      travelRow.style.display = 'block';
+    } else if (travelFee && travelFee !== 'null' && travelFee !== '0.00') {
+      // Non-affiliate: only show if there's an actual fee
+      travelVal.textContent = '$' + parseFloat(travelFee).toFixed(2);
+      travelRow.style.display = 'block';
+    }
+  }
 	
   // Call WordPress to create the PaymentIntent
   fetch(WP_ENDPOINT, {

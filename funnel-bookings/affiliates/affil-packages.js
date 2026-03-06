@@ -1,4 +1,3 @@
-<script>
 /* ============================================================
    SCRIPT — AFFILIATE PACKAGE SELECTION PAGE
    Page: /package-selection-affiliate (or equivalent)
@@ -16,16 +15,40 @@
 
 (function () {
 
-  // ----------------------------------------------------------
-  // PACKAGE MAP
-  // Keys must match the exact radio option labels in GHL.
-  // Values are the clean internal keys passed downstream.
-  // ----------------------------------------------------------
-  const packageMap = {
-    'Bumper Car Rental (Starting from $595)'             : 'bumper_car',
-    'Bumper Car & Bounce House Rental (Starting from $795)' : 'bumper_bounce',
-    'Little Racer Deluxe (Starting from $1795)'          : 'little_racer_deluxe',
-  };
+  // Package label → internal key (matched via substring)
+  const packageKeyMap = [
+     { match: 'Bumper Car Rental', key: 'bumper_car' },
+     { match: 'Bumper Car & Bounce House Rental', key: 'bumper_bounce' },
+     { match: 'Little Racer Deluxe', key: 'little_racer_deluxe' },
+  ];
+
+   function getPackageKey(label) {
+      for (const entry of packageKeyMap) {
+         if (label.includes(entry.match)) return entry.key;
+      }
+      return label; // fallback to raw label
+   }
+
+   function extractBasePrice(label) {
+      // Pull the number out of "Starting from $XXX"
+      const match = label.match(/\$(\d+)/);
+      return match ? parseInt(match[1], 10) : 0;
+   }
+
+   document.addEventListener('change', function (e) {
+      const el = e.target;
+
+      if (el.type === 'radio' && (el.name === 'package' || el.getAttribute('data-q') === 'package')) {
+         const val = el.value.trim();
+         const packageKey = getPackageKey(val);
+         const basePrice = extractBasePrice(val);
+
+         sessionStorage.setItem('lrpr_package', packageKey);
+         sessionStorage.setItem('lrpr_base_price', basePrice);
+
+         console.log('[LRPR] Package selected:', packageKey, '| Base price: $' + basePrice);
+      }
+   }};
 
   // ----------------------------------------------------------
   // BASE PRICE MAP
@@ -57,4 +80,3 @@
   });
 
 })();
-</script>

@@ -1,4 +1,3 @@
-<script>
   /* ============================================================
    SCRIPT 4 — AFFILIATE ADD-ONS PAGE
    Page: /addons-affiliate (or equivalent affiliate URL)
@@ -78,4 +77,3 @@
   }
 
 })();
-</script>

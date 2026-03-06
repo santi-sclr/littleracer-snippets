@@ -36,6 +36,12 @@
     { match: '3-Hour Bumper Car Rental',     price: 845 },
     { match: '4-Hour Bumper Car Rental',     price: 995 },
 
+    // — Affiliate Mega Racer Experience —
+    { match: '2-Hour Little Racer Deluxe', price: 1795 },
+    { match: '3-Hour Little Racer Deluxe', price: 2095 },
+    { match: '4-Hour Little Racer Deluxe', price: 2395 },
+    { match: '5-Hour Little Racer Deluxe', price: 2795 },
+    
     // — Little Racer Experience —
     { match: '1-Hour Little Racer',          price: 795  },
     { match: '1 1/2-Hour Little Racer',      price: 895  },
@@ -56,6 +62,7 @@
     { match: '3-Hour Bumper Cars & Bounce',  price: 1045 },
     { match: '4-Hour Bumper Cars & Bounce',  price: 1195 },
     { match: '5-Hour Bumper Cars & Bounce',  price: 1345 },
+
 
   ];
 

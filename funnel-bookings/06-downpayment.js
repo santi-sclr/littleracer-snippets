@@ -65,16 +65,6 @@
       travelRow.style.display = 'block';
     }
   }
-
-  // ── Handle Affiliate Disclaimer ────────────────────────
-  const disclaimerRow = document.getElementById('affiliate-disclaimer-row');
-	if (disclaimerRow) {
-  	  if (source === 'affiliate') {
-    	disclaimerRow.style.display = 'block';
-    }
-  }
-
-
 	
   // Call WordPress to create the PaymentIntent
   fetch(WP_ENDPOINT, {

@@ -73,6 +73,19 @@
         disclaimerRow.style.display = 'block';
     }
   }
+
+  // ── Handle Affiliate Add-Ons Display ────────────────────────
+  const addonsRow = document.getElementById('addons-row');
+	if (addonsRow) {
+  		const addons = JSON.parse(sessionStorage.getItem('lrpr_addons') || '[]');
+  		if (addons.length > 0) {
+    		const addonsValue = document.getElementById('addons-value');
+    		if (addonsValue) {
+      			addonsValue.textContent = addons.map(a => a.label).join(' | ');
+    }
+    addonsRow.style.display = 'block';
+  }
+}
 	
   // Call WordPress to create the PaymentIntent
   fetch(WP_ENDPOINT, {

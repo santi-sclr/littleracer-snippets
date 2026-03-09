@@ -73,10 +73,12 @@
   // Called when address changes to reset stale values
   // ----------------------------------------------------------
   function clearHiddenFields() {
-    fillHiddenField('location_type',      '');
-    fillHiddenField('router_location_id', '');
-    fillHiddenField('travel_fee',         '');
-    fillHiddenField('affiliate_email',    '');
+    fillHiddenField('location_type',             '');
+    fillHiddenField('router_location_id',        '');
+    fillHiddenField('travel_fee',                '');
+    fillHiddenField('affiliate_email',           '');
+    fillHiddenField('backup_affiliate_name',     '');
+    fillHiddenField('backup_affiliate_email',    '');
     sessionStorage.removeItem('lrpr_location_type');
   }
 
@@ -113,10 +115,12 @@
     const result = await lookupLocation(address);
     console.log('[LRPR] Router result:', result);
 
-    fillHiddenField('location_type',      result.type || 'out_of_area');
-    fillHiddenField('router_location_id', result.id   || '');
-    fillHiddenField('travel_fee',         result.travel_fee != null ? String(result.travel_fee) : '0');
-    fillHiddenField('affiliate_email',    result.affiliate_email || '');
+    fillHiddenField('location_type',          result.type || 'out_of_area');
+    fillHiddenField('router_location_id',     result.id   || '');
+    fillHiddenField('travel_fee',             result.travel_fee != null ? String(result.travel_fee) : '0');
+    fillHiddenField('affiliate_email',        result.affiliate_email || '');
+    fillHiddenField('backup_affiliate_name',  result.backup_affiliate_name  || '');
+    fillHiddenField('backup_affiliate_email', result.backup_affiliate_email || '');
 
     // Also persist location_type to sessionStorage so later pages
     // (e.g. the calendar page) can read it without GHL form context

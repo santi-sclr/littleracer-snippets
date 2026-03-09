@@ -23,7 +23,31 @@
   };
 
   const DEPOSIT_RATE = 0.25;
+  
+  // ----------------------------------------------------------
+  // DISPLAY SELECTED ADDONS
+  // ----------------------------------------------------------
 
+  function captureSelectedAddons() {
+    const selected = [];
+
+    document.querySelectorAll('[data-q="addons_affiliates"]:checked').forEach(function (cb) {
+      const label = cb.value.trim();
+      const price = AFFILIAT_ADDON_PRICES[label];
+      if (price !== undefined) {
+        selected.push({ label, price });
+      }
+  });
+
+  // Store as JSON string in sessionStorage
+  sessionStorage.setItem('lrpr_addons', JSON.stringify(selected));
+
+  // Also store a readable comma-separated list
+  sessionStorage.setItem('lrpr_addons_labels', selected.map(a => a.label).join(', '));
+
+  console.log('[LRPR Affiliate] Selected Addons: ', selected);
+  }
+  
   // ----------------------------------------------------------
   // CALCULATION FUNCTION
   // ----------------------------------------------------------

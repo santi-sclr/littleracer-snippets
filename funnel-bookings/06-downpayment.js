@@ -57,7 +57,7 @@
   if (travelRow && travelVal) {
     if (source === 'affiliate') {
       // Affiliate: always show "to be determined with vendor"
-      travelVal.textContent = 'To be determined with vendor.';
+      travelVal.textContent = 'A travel fee up to 175$ may be added based on distance from our nearest vendor.';
       travelRow.style.display = 'block';
     } else if (travelFee && travelFee !== 'null' && travelFee !== '0.00') {
       // Non-affiliate: only show if there's an actual fee

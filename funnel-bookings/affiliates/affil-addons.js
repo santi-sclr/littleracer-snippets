@@ -16,11 +16,11 @@
   // PRICING CONSTANTS — Affiliate only
   // ----------------------------------------------------------
   const AFFILIATE_ADDON_PRICES = {
-    'Two extra Bumper Cars - $100'                                      : 100,
-    'Four extra Bumper Cars - $200'                                     : 200,
-    'Inflatable foam axe throwing (kids 8+ and adults) - $125'         : 125,
-    '2 XL Hot Wheels Racing Tracks - $125'                             : 125,
-  };
+  'Two extra Bumper Cars – $100'                                      : 100,
+  'Four extra Bumper Cars – $200'                                     : 200,
+  'Inflatable foam axe throwing (kids 8+ and adults) – $125'         : 125,
+  '2 XL Hot Wheels Racing Tracks – $125'                             : 125,
+};
 
   const DEPOSIT_RATE = 0.25;
   

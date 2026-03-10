@@ -86,6 +86,16 @@
     addonsRow.style.display = 'block';
   }
 }
+
+ // ── Handle Affiliate Disclaimer ──────────────────────── 
+	const affiliateNoteEl = document.getElementById('affiliate-note');
+		if (affiliateNoteEl) {
+	  		if (source === 'affiliate') {
+	    		affiliateNoteEl.style.display = 'block';
+	  			} else {
+	    			affiliateNoteEl.style.display = 'none';
+   }
+ }
 	
   // Call WordPress to create the PaymentIntent
   fetch(WP_ENDPOINT, {

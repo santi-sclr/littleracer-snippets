@@ -30,10 +30,9 @@
 
   function captureSelectedAddons() {
     const selected = [];
-
     document.querySelectorAll('[data-q="addons_affiliates"]:checked').forEach(function (cb) {
       const label = cb.value.trim();
-      const price = AFFILIAT_ADDON_PRICES[label];
+      const price = AFFILIATE_ADDON_PRICES[label];
       if (price !== undefined) {
         selected.push({ label, price });
       }
@@ -70,8 +69,8 @@
   // STORE & INJECT
   // ----------------------------------------------------------
   function updateAffiliatePricing() {
+    captureSelectedAddons(); // Display List
     const { total, deposit, remaining } = calculateAffiliatePricing();
-
     sessionStorage.setItem('lrpr_total',     total.toFixed(2));
     sessionStorage.setItem('lrpr_deposit',   deposit.toFixed(2));
     sessionStorage.setItem('lrpr_remaining', remaining.toFixed(2));

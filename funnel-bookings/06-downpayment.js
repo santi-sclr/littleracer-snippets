@@ -70,22 +70,25 @@
   }
 
   // ── Handle Add-Ons Display ────────────────────────
+setTimeout(function() {
   const addonsRow = document.getElementById('addons-row');
   if (addonsRow) {
-  // Try sessionStorage first, then fall back to URL param (GHL passes contact fields as params)
     const addonsData = JSON.parse(sessionStorage.getItem('lrpr_addons') || '[]');
-    const addonsParam = params.get('add_ons') || params.get('addons') || params.get('addons_affiliates') || '';
-
     if (addonsData.length > 0) {
       const addonsValue = document.getElementById('addons-value');
-        if (addonsValue) addonsValue.textContent = addonsData.map(a => a.label).join(' | ');
-        addonsRow.style.display = 'block';
+      if (addonsValue) {
+        addonsValue.textContent = addonsData.map(a => a.label).join(' | ');
+      }
+      addonsRow.style.display = 'block';
     } else if (addonsParam && addonsParam !== 'null' && addonsParam.trim() !== '') {
-        const addonsValue = document.getElementById('addons-value');
-        if (addonsValue) addonsValue.textContent = addonsParam.replace(/,/g, ' | ');
-          addonsRow.style.display = 'block';
-        }
+      const addonsValue = document.getElementById('addons-value');
+      if (addonsValue) {
+        addonsValue.textContent = addonsParam.replace(/,/g, ' | ');
+      }
+      addonsRow.style.display = 'block';
+    }
   }
+}, 500);
 
   // Call WordPress to create the PaymentIntent
   fetch(WP_ENDPOINT, {

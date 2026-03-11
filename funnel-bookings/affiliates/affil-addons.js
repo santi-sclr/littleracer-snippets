@@ -44,6 +44,9 @@
   // Also store a readable comma-separated list
   sessionStorage.setItem('lrpr_addons_labels', selected.map(a => a.label).join(', '));
 
+  // Adding local storage
+  localStorage.setItem('lrpr_addons', JSON.stringify(selected));
+    
   console.log('[LRPR Affiliate] Selected Addons: ', selected);
   }
   

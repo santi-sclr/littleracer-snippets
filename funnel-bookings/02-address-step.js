@@ -80,6 +80,8 @@
     fillHiddenField('backup_affiliate_name',     '');
     fillHiddenField('backup_affiliate_email',    '');
     sessionStorage.removeItem('lrpr_location_type');
+    sessionStorage.removeItem('lrpr_affiliate_name');
+    sessionStorage.removeItem('lrpr_affiliate_email');
   }
 
   // ----------------------------------------------------------
@@ -125,6 +127,9 @@
     // Also persist location_type to sessionStorage so later pages
     // (e.g. the calendar page) can read it without GHL form context
     sessionStorage.setItem('lrpr_location_type', result.type || 'out_of_area');
+    // Adding these two for storing name.
+    sessionStorage.setItem('lrpr_affiliate_name',  result.name  || '');
+    sessionStorage.setItem('lrpr_affiliate_email', result.affiliate_email || '');
 
     lastAddress      = address;
     lookupComplete   = true;

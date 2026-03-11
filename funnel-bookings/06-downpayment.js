@@ -67,6 +67,19 @@
       disclaimerRow.style.display = 'block';
     }
   }
+  
+  // ── Handle Affiliate Name Display ────────────────────────
+  (function() {
+    const affiliateName     = sessionStorage.getItem('lrpr_affiliate_name')  || params.get('affiliate_name') || '';
+    const locationType      = sessionStorage.getItem('lrpr_location_type')   || source || '';
+    const assignmentRow     = document.getElementById('affiliate-assignment-row');
+    const assignmentDisplay = document.getElementById('affiliate-name-display');
+  
+    if (assignmentRow && assignmentDisplay && affiliateName && locationType === 'affiliate') {
+      assignmentDisplay.textContent = affiliateName;
+      assignmentRow.style.display   = 'block';
+    }
+  })();
 
   // ── Handle Add-Ons Display ────────────────────────
   (function() {

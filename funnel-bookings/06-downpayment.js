@@ -18,7 +18,6 @@
   const travelFee     = params.get('travel_fee') || '';
   const scheduledDate = params.get('date') || params.get('scheduled_date') || '';
   const addonsParam   = params.get('add_ons') || params.get('addons') || params.get('addons_affiliates') || '';
-  const addonsAffil   = params.get(
   const damageWaiver  = params.get('damage_waiver') || '';
   const source        = params.get('source') || '';
   const depositCents  = Math.round(parseFloat(sessionStorage.getItem('lrpr_deposit') || '0') * 100);
@@ -70,25 +69,32 @@
   }
 
   // ── Handle Add-Ons Display ────────────────────────
-setTimeout(function() {
-  const addonsRow = document.getElementById('addons-row');
-  if (addonsRow) {
-    const addonsData = JSON.parse(sessionStorage.getItem('lrpr_addons') || '[]');
-    if (addonsData.length > 0) {
-      const addonsValue = document.getElementById('addons-value');
-      if (addonsValue) {
-        addonsValue.textContent = addonsData.map(a => a.label).join(' | ');
+  (function() {
+    function showAddons() {
+      const row = document.getElementById('addons-row');
+      const val = document.getElementById('addons-value');
+      if (!row || !val) return false;
+
+      const addonsData = JSON.parse(sessionStorage.getItem('lrpr_addons') || '[]');
+      if (addonsData.length > 0) {
+        val.textContent = addonsData.map(a => a.label).join(' | ');
+        row.style.display = 'block';
+        return true;
+      } else if (addonsParam && addonsParam !== 'null' && addonsParam.trim() !== '') {
+        val.textContent = addonsParam.replace(/,/g, ' | ');
+        row.style.display = 'block';
+        return true;
       }
-      addonsRow.style.display = 'block';
-    } else if (addonsParam && addonsParam !== 'null' && addonsParam.trim() !== '') {
-      const addonsValue = document.getElementById('addons-value');
-      if (addonsValue) {
-        addonsValue.textContent = addonsParam.replace(/,/g, ' | ');
-      }
-      addonsRow.style.display = 'block';
+      return false;
     }
-  }
-}, 500);
+
+    if (!showAddons()) {
+      const observer = new MutationObserver(function() {
+        if (showAddons()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  })();
 
   // Call WordPress to create the PaymentIntent
   fetch(WP_ENDPOINT, {

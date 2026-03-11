@@ -52,7 +52,7 @@
   const travelVal = document.getElementById('travel-fee-value');
   if (travelRow && travelVal) {
     if (source === 'affiliate') {
-      travelVal.textContent = 'A travel fee up to 175$ may be added based on distance from our nearest vendor.';
+      travelVal.textContent = 'A travel fee ranging from 0$ to 150$ may be added based on distance from our nearest vendor.';
       travelRow.style.display = 'block';
     } else if (travelFee && travelFee !== 'null' && travelFee !== '0.00') {
       travelVal.textContent = '$' + parseFloat(travelFee).toFixed(2);

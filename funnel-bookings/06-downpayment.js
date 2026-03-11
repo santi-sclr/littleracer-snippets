@@ -17,7 +17,8 @@
   const eventType     = params.get('type_of_event') || '';
   const travelFee     = params.get('travel_fee') || '';
   const scheduledDate = params.get('date') || params.get('scheduled_date') || '';
-  const addonsParam   = params.get('add_ons') || params.get('addons') || '';  // renamed to avoid conflict
+  const addonsParam   = params.get('add_ons') || params.get('addons') || params.get('addons_affiliates') || '';
+  const addonsAffil   = params.get(
   const damageWaiver  = params.get('damage_waiver') || '';
   const source        = params.get('source') || '';
   const depositCents  = Math.round(parseFloat(sessionStorage.getItem('lrpr_deposit') || '0') * 100);

@@ -71,7 +71,7 @@
   // ── Handle Add-Ons Display ────────────────────────
   const addonsRow = document.getElementById('addons-row');
   if (addonsRow) {
-    const addonsData = JSON.parse(sessionStorage.getItem('lrpr_addons') || '[]');
+    const addonsData = JSON.parse(sessionStorage.getItem('lrpr_addons') || localStorage.getItem('lrpr_addons') || '[]');
     if (addonsData.length > 0) {
       const addonsValue = document.getElementById('addons-value');
       if (addonsValue) {

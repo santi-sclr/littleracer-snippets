@@ -21,6 +21,7 @@
   const packageKeyMap = [
      { match: 'Bumper Car Rental', key: 'bumper_car' },
      { match: 'Bumper Car & Bounce House Rental', key: 'bumper_bounce' },
+     { match: 'Little Racer Experience', key: 'little_racer_exp' },
      { match: 'Little Racer Deluxe', key: 'little_racer_deluxe' },
   ];
 
@@ -60,6 +61,7 @@
   const packagePrices = {
     'bumper_car'          : 595,
     'bumper_bounce'       : 795,
+    'little_racer_exp'    : 795,
     'little_racer_deluxe' : 1795,
   };
 
